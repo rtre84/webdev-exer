@@ -1,5 +1,5 @@
-Quixey web development exercise
-===============================
+Modified Quixey web development exercise answers
+================================================
 
 * [About this repo](#about-this-repo)
 * [Your task](#your-task)
