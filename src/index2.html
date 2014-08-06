@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>gh3</title>
+    
+</head>
+<body>
+	<h1></h1>
+	<h2></h2>
+	<ul></ul>
+
+  <div class="branches"></div>
+
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://underscorejs.org/underscore.js"></script>
+  <script src="gh3.js"></script>
+  <script>
+
+     var k33g = new Gh3.User("mquander")
+      , repoTitle = $("h1")
+      , branchTitle = $("h2")
+      , branchProperties = $("ul");
+
+    //get some repositories of k33g
+    var k33gRepositories = new Gh3.Repositories(k33g);
+
+    k33gRepositories.fetch({page:5, per_page:5, direction : "desc"},"next", function (err, res) {
+      if(err) {
+        throw "ouch ..."
+      }
+
+      console.log("Repositories", k33gRepositories);
+    });
+
+    //get one repository
+    var k33gBlog = new Gh3.Repository("webdev-exercise", k33g);
+
+    k33gBlog.fetch(function (err, res) {
+      if(err) {
+        console.log("Error", err.message, res.status)
+        throw err
+      }
+
+      console.log("Repository : ", k33gBlog);
+      repoTitle.html(k33gBlog.full_name);
+
+      k33gBlog.fetchBranches(function (err, res) {
+        if(err) {
+          console.log("Error", err.message, res.status)
+          throw err
+        }
+
+        console.log("Array of branches : ", k33gBlog.getBranches());
+        k33gBlog.eachBranch(function (branch) {
+          console.log(branch.name);
+        })
+
+        //and :
+        var master = k33gBlog.getBranchByName("master");
+        branchTitle.html(master.name + " (" + master.sha + ") properties :");
+
+        _.each(_.keys(master), function (prop) {
+          branchProperties.append(
+            $('<li>').append(prop+" : "+master[prop])
+          );
+        });
+
+      })
+    });
+
+    
+
+    k33gBlog.fetch(function (err, res) {
+      if(err) {
+        console.log("Error", err.message, res.status)
+        throw err
+      }
+
+      k33gBlog.fetchBranches(function (err, res) {
+        if(err) {
+          console.log("Error", err.message, res.status)
+          throw err
+        }
+
+        //fetch master branch
+        var master = k33gBlog.getBranchByName("master");
+        var master_sha = master.sha;
+
+        //compare sha against branch believed to be up-to-date
+        function uptodate(master_sha, branch_sha){
+              if(master_sha !== branch_sha){
+                return 'Out-of-date';
+              }
+              else {
+                return 'Latest';
+              }
+        };
+
+        //output branches
+         k33gBlog.eachBranch(function (branch) {
+          $('.branches').append(branch.name+' sha: '+branch.sha+' '+uptodate(master_sha,branch.sha)+'<br>');
+         });
+
+     });
+    });
+
+  </script>
+</body>
+
+</html>

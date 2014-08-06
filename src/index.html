@@ -52,9 +52,46 @@
           <input type="submit" class="btn btn-default" value="Add project">
         </div>
       </form>
+
+<style>
+.githubapi{
+ height:50px; 
+}
+</style>
+
+    <div class="githubapi">
+      <h2>Type in a commit, branch or tag</h2>
+    <div class="form-group git">
+          <input type="submit" class="btn btn-default" value="Update Status">
+    </div>
+    <div class="git2"></div>
     </div>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="projects.js"></script>
+    <!-- Simple JS solution -->
+    <script>
+          function dumpResponse() { 
+            var thing = $('.git').html(this.responseText); 
+          
+            var json_obj = $.parseJSON(thing); //parse JSON
+            var output="<ul>";
+            for (var i in json_obj) 
+            {
+                output+="<li>" + json_obj[i].Language + ",  " + json_obj[i].ID + "</li>";
+            }
+            output+="</ul>";
+            $('.git2').html(output);
+          
+          }
+
+          var request = new XMLHttpRequest();
+          // Set the event handler
+          request.onload = dumpResponse;
+          // Initialize the request
+          request.open('get', 'https://api.github.com/users/mquander', true)
+          // Fire away!
+          request.send()
+    </script>
   </body>
 </html>
