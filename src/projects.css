@@ -1,3 +1,9 @@
 .main-content {
     padding-top: 60px; /* make room for the fixed header */
 }
+.githubapi {
+ 	height: 150px; /* master branch details populated via github api */ 
+}
+#branches {
+	height: auto; /* div where branch details will be populated */
+}

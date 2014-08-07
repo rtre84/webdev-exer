@@ -57,4 +57,67 @@ $(function(){
         resetForm($form);
         e.preventDefault();
     });
+
+   /*******************************************************
+    * Adding in Branch Logic in response to webdev-exercise
+    * Anup Vasudevan : 08/06/2014
+    ******************************************************/
+
+    
+    var user = new Gh3.User("mquander")
+      , repoTitle = $(".repoTitle")
+      , branchTitle = $(".branchTitle")
+      , branchProperties = $("ul");
+
+    //get some repositories of k33g
+    var userRepositories = new Gh3.Repositories(user);
+
+    userRepositories.fetch({page:5, per_page:5, direction : "desc"},"next", function (err, res) {
+      if(err) {
+        throw "ouch ..."
+      }
+
+      console.log("Repositories", userRepositories);
+    });
+
+    //get one repository
+    var userRepo = new Gh3.Repository("webdev-exercise", user);
+
+    //fetch information on branches via github api
+    userRepo.fetch(function (err, res) {
+      if(err) {
+        console.log("Error", err.message, res.status)
+        throw err
+      }
+
+      userRepo.fetchBranches(function (err, res) {
+        if(err) {
+          console.log("Error", err.message, res.status)
+          throw err
+        }
+
+        //fetch master branch
+        var master = userRepo.getBranchByName("master");
+        var master_sha = master.sha;
+
+        //compare sha against master believed to be up-to-date
+        function uptodate(master_sha, branch_sha){
+              if(master_sha !== branch_sha){
+                return 'Out-of-date';
+              }
+              else {
+                return 'Latest';
+              }
+        };
+
+        //output branches
+         userRepo.eachBranch(function (branch) {
+            $('.name').append(branch.name + '<br>');
+            $('.sha').append(branch.sha + '<br>');
+            $('.status').append(uptodate(master_sha, branch.sha) + '<br>');
+         });
+
+     });
+    });
+
 });
