@@ -1,4 +1,4 @@
-Quixey Web Development Exercise Answer
+Quixey Web Dev Exercise Answer
 =======================================
 
 * [About this repo](#about-this-repo)
