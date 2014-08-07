@@ -63,22 +63,13 @@ $(function(){
     * Anup Vasudevan : 08/06/2014
     ******************************************************/
 
-    
     var user = new Gh3.User("mquander")
       , repoTitle = $(".repoTitle")
       , branchTitle = $(".branchTitle")
       , branchProperties = $("ul");
 
-    //get some repositories of k33g
+    //get some repositories of the user
     var userRepositories = new Gh3.Repositories(user);
-
-    userRepositories.fetch({page:5, per_page:5, direction : "desc"},"next", function (err, res) {
-      if(err) {
-        throw "ouch ..."
-      }
-
-      console.log("Repositories", userRepositories);
-    });
 
     //get one repository
     var userRepo = new Gh3.Repository("webdev-exercise", user);
