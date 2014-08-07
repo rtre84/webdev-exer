@@ -1,4 +1,4 @@
-Modified Quixey web development exercise answers
+Modified Quixey Web Development Exercise Answers
 ================================================
 
 * [About this repo](#about-this-repo)
@@ -6,9 +6,7 @@ Modified Quixey web development exercise answers
 * [Notes and resources](#notes-and-resources)
 * [Afterward](#afterward)
 
-Hi! If you're here then you are probably interested in working for [Quixey](https://quixey.com/careers). We set up this exercise so that our candidates could have a clear way to demonstrate their front-end-web-dev ability in a realistic way that (hopefully) isn't too stressful or time-consuming.
-
-Ideally, this exercise should probably take around an hour for you to do a good job, or maybe a little more if you need to brush up on front-end tools or git. If you want to spend more time to add bells and whistles, then that's great, and you'll get bonus points from us if you do it well, but please don't feel like you have to spend half a day on it.
+Hi! This is an answer to Quixley's web dev challenge. 
 
 About this repo
 ---------------
@@ -24,6 +22,8 @@ Serving HTTP on 0.0.0.0 port 8000 ...
 and then visiting `http://localhost:8000` in your browser.
 
 This tool is built to be used by internal testers at Quixey who work on projects set up by search engineers here. It shows a list of all the current projects, and has a little UI for adding new projects to the list. Each project has an ID, a name, a type (there are only a few different project types), and an activity date. (Realistically, it might load this information from a database, but for the purposes of this exercise the 'database' is just an array in `projects.js`.)
+
+*** Note: The new code has been added to project.js to make it cleaner as opposed to writing the code in index.html ***
 
 Your task
 ---------
