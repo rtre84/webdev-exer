@@ -2,11 +2,8 @@ Modified Quixey Web Development Exercise Answers
 ================================================
 
 * [About this repo](#about-this-repo)
-* [Your task](#your-task)
-* [Notes and resources](#notes-and-resources)
-* [Afterward](#afterward)
 
-Hi! This is an answer to Quixey's web dev challenge. 
+Hi! This is a response to Quixey's web dev challenge. 
 
 About this repo
 ---------------
@@ -25,52 +22,3 @@ This tool is built to be used by internal testers at Quixey who work on projects
 
 *** Note: The new code has been added to project.js to make it cleaner as opposed to writing the code in index.html ***
 ------------------------------------------------------------------------------------------------------------------------
-
-Your task
----------
-
-You just received a feature request from some search engineers which you would like to implement. The search engineers collaborate via GitHub, and usually their projects are associated with a specific commit or topic branch in their repository.
-
-However, sometimes the projects last a long time, and the branch that they are based on gets out of date with respect to master. (If you don't know what I mean by this, you might want to review how [git branching](http://rypress.com/tutorials/git/branches-2.html) works.) Sometimes, this is OK, but other times, this can mean that the testers are not testing the latest code, and the engineer in charge of the project wants to notice it so that they can rebase their branch on master and update the test deployment; otherwise the results might be inaccurate.
-
-The search engineering team thinks that if you could show them in the project tool when their branch is out-of-date, then they would make many less errors during testing. One of them suggested that a good way to do it might be like this:
-
-- Allow them to specify a commit or branch or tag that goes along with a particular project.
-- Talk to the GitHub API to figure out whether or not each project is up-to-date with master.
-- Add a UI element to the project list that helps them see which projects are OK and which need updating.
-
-If you agree that this is a good idea, then you should give it a shot and implement it. (If you don't, then prepare to argue for your better idea!)
-
-Notes and resources
--------------------
-
-There are some branches in this repository that might be helpful for you to test your changes on.
-
-Here are some helpful sections of the documentation for the GitHub API:
-
-- [Overview](https://developer.github.com/v3/)
-- [Repositories](https://developer.github.com/v3/repos/)
-- [Commits](https://developer.github.com/v3/repos/commits/)
-
-Note that you can access the GitHub API and ask queries about public repositories (like this one!) without any authentication, but there's a rate limit of 60 queries per hour. If you run into the rate limit, then you can [authenticate via HTTP basic authentication or an OAuth token for your account](https://developer.github.com/v3/#authentication) to up the limit to 5000.
-
-Please use any online resources you like, or ask anyone questions, but clearly attribute any code which isn't your own. (And we'll probably ask you some questions about what you did, so it won't be advisable to write something you don't understand.)
-
-If you think it would be helpful to write some backend code or anything else we didn't anticipate, feel free to write it using whatever languages, libraries, and tools you think are a good fit for the task.
-
-Qualities we're looking for in your solution:
-
-- You should solve the stated problem well for users of the tool
-- Your work is clear, concise, correct, maintainable, and the code is appropriately efficient
-- Code and UI that you add should be consistent with the existing codebase and interface
-- Design decisions you make are clearly thought-through
-
-Afterward
----------
-
-After you're finished, please let us know and either:
-
-- (Ideal) Make a pull request from your forked repo for your changes
-- (Also OK) Link us to your code, or send us your code via email.
-
-If you have any feedback, please let us know; we care about making sure that our interview process doesn't suck for you and does a fair job of assessing your skill. Thanks for taking the time to do this!
