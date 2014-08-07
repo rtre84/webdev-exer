@@ -1,5 +1,5 @@
-Modified Quixey Web Development Exercise Answers
-================================================
+Quixey Web Development Exercise Answer
+=======================================
 
 * [About this repo](#about-this-repo)
 
